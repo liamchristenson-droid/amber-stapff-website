@@ -1,0 +1,34 @@
+---
+import type { getSettings } from '../lib/content';
+interface Props { s: Awaited<ReturnType<typeof getSettings>>; compact?: boolean }
+const { s, compact = false } = Astro.props;
+const year = new Date().getFullYear();
+---
+<footer id="contact" class:list={['site-footer', { compact }]}>
+  <div class="wrap footer-inner">
+    {compact ? (
+      <div class="footer-row">
+        <p>Let's talk.</p>
+        <a class="footer-email" href={`mailto:${s.email}`}>{s.email}</a>
+      </div>
+    ) : (
+      <>
+        <div class="footer-contact">
+          <p class="footer-heading">{s.contact_heading}</p>
+          <a class="footer-email" href={`mailto:${s.email}`}>{s.email}</a>
+        </div>
+        {s.services.length > 0 && (
+          <ul class="services" aria-label="Services">
+            {s.services.map((sv) => (
+              <li class="service"><strong>{sv.title}</strong><span>{sv.text}</span></li>
+            ))}
+          </ul>
+        )}
+      </>
+    )}
+    <div class="footer-base label">
+      <span>© {year} {s.name}</span>
+      {s.footer_location && <span>{s.footer_location}</span>}
+    </div>
+  </div>
+</footer>

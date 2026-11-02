@@ -1,0 +1,146 @@
+# Decap CMS configuration — Amber's editing dashboard (amberstapff.com.au/admin)
+# Docs: https://decapcms.org/docs/configuration-options/
+
+backend:
+  name: github
+  repo: YOUR-GITHUB-USERNAME/amber-stapff-website # ← set this when the repo is created
+  branch: main
+  commit_messages:
+    create: 'Add {{collection}} “{{slug}}”'
+    update: 'Update {{collection}} “{{slug}}”'
+    delete: 'Delete {{collection}} “{{slug}}”'
+    uploadMedia: 'Upload “{{path}}”'
+    deleteMedia: 'Delete “{{path}}”'
+
+site_url: https://amberstapff.com.au
+display_url: https://amberstapff.com.au
+logo_url: /favicon.svg
+locale: en
+
+# Images Amber uploads are stored in the site and resized + optimised automatically when the site builds.
+media_folder: src/assets/uploads
+public_folder: ../../assets/uploads
+
+collections:
+  - name: projects
+    label: Projects
+    label_singular: Project
+    description: Your case studies. Lower “Order” numbers appear first on the homepage. Untick “Show on website” to hide a project without deleting it.
+    folder: src/content/projects
+    create: true
+    delete: true
+    extension: md
+    format: frontmatter
+    slug: '{{slug}}'
+    summary: "{{order}} · {{title}}{{published | ternary('', ' — hidden')}}"
+    sortable_fields: ['order', 'title', 'year']
+    view_groups:
+      - label: Visibility
+        field: published
+    fields:
+      - { label: Project title, name: title, widget: string }
+      - { label: Show on website, name: published, widget: boolean, default: true }
+      - { label: Order, name: order, widget: number, value_type: int, default: 50, hint: 'Position on the homepage — 1 is first.' }
+      - { label: Card subtitle, name: summary, widget: string, required: false, hint: 'Short line under the title on the homepage, e.g. “With TAIT — Graphic design & site styling”.' }
+      - label: Cover image (homepage card)
+        name: cover
+        widget: image
+        choose_url: false
+      - { label: Cover image description, name: cover_alt, widget: string, required: false, hint: 'Describe the image for screen readers.' }
+      - label: Cover shape
+        name: cover_shape
+        widget: select
+        default: landscape
+        options:
+          - { label: 'Landscape (3:2)', value: landscape }
+          - { label: 'Portrait (4:5)', value: portrait }
+          - { label: 'Square', value: square }
+          - { label: 'Wide — full row (21:9)', value: wide }
+      - label: Hero image (top of project page)
+        name: hero
+        widget: image
+        choose_url: false
+      - { label: Hero image description, name: hero_alt, widget: string, required: false }
+      - { label: Intro line, name: intro, widget: text, required: false, hint: 'One sentence shown under the title.' }
+      - { label: Client, name: client, widget: string, required: false }
+      - { label: Location, name: location, widget: string, required: false }
+      - { label: Year, name: year, widget: string, required: false, hint: 'e.g. 2025 or 2015–2025' }
+      - { label: My role / services, name: role, widget: string, required: false }
+      - { label: Working under, name: working_under, widget: string, required: false, hint: 'Agency or company you delivered this through — leave blank if none.' }
+      - { label: Image credit, name: credits, widget: string, required: false, hint: 'Photographer names, shown as “Photography”.' }
+      - { label: Overview, name: overview, widget: text, required: false }
+      - { label: The Challenge, name: challenge, widget: text, required: false }
+      - { label: The Approach, name: approach, widget: text, required: false }
+      - { label: The Outcome, name: outcome, widget: text, required: false }
+      - label: Image gallery
+        name: gallery
+        widget: list
+        required: false
+        label_singular: image row
+        summary: '{{fields.layout}} row'
+        hint: 'Rows of images, shown in order between the text sections. Drag rows to reorder.'
+        fields:
+          - label: Row layout
+            name: layout
+            widget: select
+            default: pair
+            options:
+              - { label: 'Full width — 1 image', value: full }
+              - { label: 'Pair — 2 images side by side', value: pair }
+              - { label: 'Trio — 3 tall images', value: trio }
+          - label: Images
+            name: images
+            widget: list
+            label_singular: image
+            summary: '{{fields.alt}}'
+            fields:
+              - { label: Image, name: image, widget: image, choose_url: false }
+              - { label: Description, name: alt, widget: string, required: false }
+
+  - name: settings
+    label: Homepage & About
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: home
+        label: Homepage, About & Contact
+        file: src/content/settings/home.yml
+        fields:
+          - { label: Name, name: name, widget: string }
+          - { label: Positioning line, name: positioning, widget: text }
+          - { label: Small details under the intro, name: meta, widget: list, collapsed: false, field: { label: Detail, name: detail, widget: string } }
+          - label: Homepage video
+            name: hero_video
+            widget: file
+            required: false
+            choose_url: false
+            media_folder: /public/media
+            public_folder: /media
+            hint: 'An MP4 under ~10 MB plays best. It loops silently. Leave empty to use the image below instead.'
+          - { label: Video placeholder image, name: hero_poster, widget: image, required: false, hint: 'Shown while the video loads.' }
+          - { label: Homepage image (if no video), name: hero_image, widget: image, required: false }
+          - { label: Caption under video (left), name: hero_caption, widget: string, required: false }
+          - { label: Caption under video (right), name: hero_caption_right, widget: string, required: false }
+          - { label: About — small heading, name: about_label, widget: string, required: false }
+          - { label: About — statement, name: about_statement, widget: text }
+          - { label: Headshot, name: headshot, widget: image, required: false }
+          - label: Numbers
+            name: stats
+            widget: list
+            summary: '{{fields.value}} {{fields.label}}'
+            fields:
+              - { label: Number, name: value, widget: string }
+              - { label: Label, name: label, widget: string }
+          - { label: Worked with, name: worked_with, widget: text, required: false }
+          - { label: Projects across (countries), name: countries, widget: text, required: false }
+          - { label: Contact heading, name: contact_heading, widget: string }
+          - { label: Email, name: email, widget: string }
+          - label: Services (footer)
+            name: services
+            widget: list
+            summary: '{{fields.title}}'
+            fields:
+              - { label: Service, name: title, widget: string }
+              - { label: Description, name: text, widget: text }
+          - { label: Footer location line, name: footer_location, widget: string, required: false }

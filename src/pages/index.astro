@@ -1,0 +1,131 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getSettings, getProjects, layoutRows, projectUrl } from '../lib/content';
+
+const s = await getSettings();
+const projects = await getProjects();
+const rows = layoutRows(projects);
+const shapeClass = { landscape: 'r-landscape', portrait: 'r-portrait', square: 'r-square', wide: 'r-wide' } as const;
+const sizesFor = (w: string) =>
+  w === 'w-12' ? '(min-width: 1440px) 1328px, 100vw'
+  : w === 'w-7' ? '(min-width: 900px) 58vw, 100vw'
+  : w === 'w-4' ? '(min-width: 900px) 32vw, 100vw'
+  : '(min-width: 900px) 45vw, 100vw';
+---
+<Base title={`${s.name} — Creative Designer, Graphic Producer & Event Stylist`}>
+  <Header name={s.name} home />
+  <main id="main">
+    <section id="top" class="wrap hero">
+      <h1 class="hero-name">{s.name}</h1>
+      <div class="hero-row">
+        <p class="lede">{s.positioning}</p>
+        {s.meta.length > 0 && (
+          <ul class="meta-list label">{s.meta.map((m) => <li>{m}</li>)}</ul>
+        )}
+      </div>
+    </section>
+
+    {(s.hero_video || s.hero_image) && (
+      <section class="wrap" aria-label="Showreel">
+        <div class="reel">
+          {s.hero_video ? (
+            <>
+              <video
+                id="reel"
+                src={s.hero_video.replace(/^\//, '')}
+                poster={s.hero_poster?.src}
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-label={s.hero_caption ?? 'Showreel'}
+              ></video>
+              <button class="reel-toggle" type="button" id="reel-toggle" aria-pressed="false">Pause</button>
+            </>
+          ) : (
+            s.hero_image && <Image src={s.hero_image} alt="" widths={[1100, 2000]} sizes="100vw" loading="eager" />
+          )}
+        </div>
+        {(s.hero_caption || s.hero_caption_right) && (
+          <div class="caption-row label"><span>{s.hero_caption}</span><span>{s.hero_caption_right}</span></div>
+        )}
+      </section>
+    )}
+
+    <section id="work" class="wrap work">
+      <div class="section-head">
+        <h2>Selected Work</h2>
+        <span class="label">({projects.length})</span>
+      </div>
+      <div class="grid">
+        {rows.map((row) => (
+          <div class="grid-row">
+            {row.map(({ project: p, width, drop }) => (
+              <a class:list={['card', width, drop]} href={projectUrl(p)}>
+                <Image
+                  class:list={['media', shapeClass[p.data.cover_shape]]}
+                  src={p.data.cover}
+                  alt={p.data.cover_alt}
+                  widths={[640, 1280]}
+                  sizes={sizesFor(width)}
+                />
+                <div class="card-text">
+                  <div class="card-title">
+                    <strong>{p.data.title}</strong>
+                    {p.data.summary && <span>{p.data.summary}</span>}
+                  </div>
+                  {p.data.year && <span class="card-year">{p.data.year}</span>}
+                </div>
+              </a>
+            ))}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section id="about" class="wrap about">
+      <div class="section-head">
+        <h2>About</h2>
+        {s.about_label && <span class="label">{s.about_label}</span>}
+      </div>
+      <div class="about-body">
+        {s.headshot && (
+          <Image class="headshot" src={s.headshot} alt={`Portrait of ${s.name}`} widths={[300, 600]} sizes="300px" />
+        )}
+        <div class="about-copy">
+          <p class="statement">{s.about_statement}</p>
+          {s.stats.length > 0 && (
+            <div class="stats">
+              {s.stats.map((st) => (
+                <div class="stat"><strong>{st.value}</strong><span>{st.label}</span></div>
+              ))}
+            </div>
+          )}
+          <div class="facts">
+            {s.worked_with && <div class="fact"><span class="label">Worked with</span><p>{s.worked_with}</p></div>}
+            {s.countries && <div class="fact"><span class="label">Projects across</span><p>{s.countries}</p></div>}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer s={s} />
+
+  <script is:inline>
+    (function () {
+      var v = document.getElementById('reel');
+      var b = document.getElementById('reel-toggle');
+      if (!v || !b) return;
+      function set(paused) { b.textContent = paused ? 'Play' : 'Pause'; b.setAttribute('aria-pressed', String(paused)); }
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.pause(); v.removeAttribute('autoplay'); set(true); }
+      b.addEventListener('click', function () {
+        if (v.paused) { var p = v.play(); if (p && p.catch) p.catch(function () {}); set(false); }
+        else { v.pause(); set(true); }
+      });
+    })();
+  </script>
+</Base>

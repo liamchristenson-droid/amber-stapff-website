@@ -1,0 +1,112 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getSettings, getProjects, paragraphs, projectUrl, type Project } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const projects = await getProjects();
+  return projects.map((p, i) => ({
+    params: { slug: p.id },
+    props: { project: p, next: projects[(i + 1) % projects.length] },
+  }));
+}
+
+interface Props { project: Project; next: Project }
+const { project, next } = Astro.props;
+const d = project.data;
+const s = await getSettings();
+
+const details = [
+  ['Client', d.client],
+  ['Location', d.location],
+  ['Year', d.year],
+  ['Role', d.role],
+  ['Working under', d.working_under],
+  ['Photography', d.credits],
+].filter(([, v]) => v && String(v).trim());
+
+const sections = [
+  ['Overview', d.overview],
+  ['The Challenge', d.challenge],
+  ['The Approach', d.approach],
+  ['The Outcome', d.outcome],
+].filter(([, v]) => v && String(v).trim()) as [string, string][];
+
+// Interleave the narrative with the gallery: each text section is followed by a share of the rows.
+const rows = d.gallery.filter((r) => r.images.length > 0);
+const per = sections.length ? Math.ceil(rows.length / sections.length) : rows.length;
+const chunks = sections.map((_, i) => rows.slice(i * per, (i + 1) * per));
+const leftover = sections.length ? [] : rows;
+
+const ratio = (layout: string, count: number) =>
+  layout === 'full' ? 'r-video' : layout === 'trio' ? 'r-tall' : count === 1 ? 'r-video' : 'r-landscape';
+const sizes = (layout: string) =>
+  layout === 'full' ? '(min-width: 1440px) 1328px, 100vw' : layout === 'trio' ? '(min-width: 900px) 32vw, 100vw' : '(min-width: 900px) 48vw, 100vw';
+---
+<Base title={`${d.title} — ${s.name}`} description={d.intro ?? d.summary}>
+  <Header name={s.name} />
+  <main id="main">
+    <section class="wrap cs-head">
+      <a class="back label" href="/index.html#work">← All work</a>
+      <h1 class="cs-title">{d.title}</h1>
+      {d.intro && <p class="cs-intro">{d.intro}</p>}
+      {details.length > 0 && (
+        <dl class="details">
+          {details.map(([k, v]) => (
+            <div><dt class="label">{k}</dt><dd>{v}</dd></div>
+          ))}
+        </dl>
+      )}
+    </section>
+
+    <section class="wrap" aria-label="Hero image">
+      <Image class="media r-video" src={d.hero} alt={d.hero_alt} widths={[1100, 2000]} sizes="(min-width: 1440px) 1328px, 100vw" loading="eager" />
+    </section>
+
+    {sections.map(([heading, text], i) => (
+      <>
+        <section class="wrap cs-text">
+          <h2>{heading}</h2>
+          <div class="prose">{paragraphs(text).map((t) => <p>{t}</p>)}</div>
+        </section>
+        {chunks[i].length > 0 && (
+          <section class="wrap gallery" aria-label={`${heading} images`}>
+            {chunks[i].map((r) => (
+              <div class:list={['g-row', `g-${r.layout}`]}>
+                {r.images.map((im) => (
+                  <Image class:list={['media', ratio(r.layout, r.images.length)]} src={im.image} alt={im.alt} widths={r.layout === 'full' ? [1100, 1800] : [640, 1280]} sizes={sizes(r.layout)} />
+                ))}
+              </div>
+            ))}
+          </section>
+        )}
+      </>
+    ))}
+    {leftover.length > 0 && (
+      <section class="wrap gallery gallery-bottom" aria-label="Project images">
+        {leftover.map((r) => (
+          <div class:list={['g-row', `g-${r.layout}`]}>
+            {r.images.map((im) => (
+              <Image class:list={['media', ratio(r.layout, r.images.length)]} src={im.image} alt={im.alt} widths={r.layout === 'full' ? [1100, 1800] : [640, 1280]} sizes={sizes(r.layout)} />
+            ))}
+          </div>
+        ))}
+      </section>
+    )}
+
+    {next && next.id !== project.id && (
+      <section class="wrap next" aria-label="Next project">
+        <a href={projectUrl(next)}>
+          <div class="next-text">
+            <span class="label">Next project</span>
+            <span class="next-title">{next.data.title} →</span>
+          </div>
+          <Image class="media r-landscape" src={next.data.cover} alt="" widths={[640]} sizes="(min-width: 900px) 30vw, 100vw" />
+        </a>
+      </section>
+    )}
+  </main>
+  <Footer s={s} compact />
+</Base>
