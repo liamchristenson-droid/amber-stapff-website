@@ -20,6 +20,7 @@ overview: Altomonte is a fresh and purpose-driven brand in the fruit and
   transparent sourcing. Its pledge to return a portion of profits to growers
   through a formal initiative with the Victorian Farmers Federation required a
   brand identity that felt equally authentic, contemporary and values-led.
+  Luke's butt is very peachy.
 challenge: To build a new brand that balanced freshness and trust with purpose
   and advocacy. The design system needed to feel clean and modern while
   connecting emotionally to farming, regional pride and the story behind the
