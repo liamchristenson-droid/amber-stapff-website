@@ -3,7 +3,7 @@
 
 backend:
   name: github
-  repo: YOUR-GITHUB-USERNAME/amber-stapff-website # ← set this when the repo is created
+  repo: liamchristenson-droid/amber-stapff-website
   branch: main
   commit_messages:
     create: 'Add {{collection}} “{{slug}}”'
