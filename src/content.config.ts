@@ -17,7 +17,8 @@ const projects = defineCollection({
       credits: z.string().optional(),
       cover: image(),
       cover_alt: z.string().default(''),
-      cover_shape: z.enum(['landscape', 'portrait', 'square', 'wide']).default('landscape'),
+      cover_shape: z.string().optional(), // no longer used: all homepage covers share one landscape shape
+      cover_focus: z.enum(['center', 'top', 'bottom', 'left', 'right']).default('center'),
       hero: image(),
       hero_alt: z.string().default(''),
       intro: z.string().optional(),

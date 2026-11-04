@@ -42,20 +42,22 @@ collections:
       - { label: Show on website, name: published, widget: boolean, default: true }
       - { label: Order, name: order, widget: number, value_type: int, default: 50, hint: 'Position on the homepage — 1 is first.' }
       - { label: Card subtitle, name: summary, widget: string, required: false, hint: 'Short line under the title on the homepage, e.g. “With TAIT — Graphic design & site styling”.' }
-      - label: Cover image (homepage card)
+      - label: Cover image (homepage, shown landscape)
         name: cover
         widget: image
         choose_url: false
       - { label: Cover image description, name: cover_alt, widget: string, required: false, hint: 'Describe the image for screen readers.' }
-      - label: Cover shape
-        name: cover_shape
+      - label: Cover crop focus
+        name: cover_focus
         widget: select
-        default: landscape
+        default: center
+        hint: 'Homepage covers are shown landscape. Pick which part of the image to keep in frame.'
         options:
-          - { label: 'Landscape (3:2)', value: landscape }
-          - { label: 'Portrait (4:5)', value: portrait }
-          - { label: 'Square', value: square }
-          - { label: 'Wide — full row (21:9)', value: wide }
+          - { label: 'Centre', value: center }
+          - { label: 'Top', value: top }
+          - { label: 'Bottom', value: bottom }
+          - { label: 'Left', value: left }
+          - { label: 'Right', value: right }
       - label: Hero image (top of project page)
         name: hero
         widget: image
@@ -110,6 +112,7 @@ collections:
           - { label: Name, name: name, widget: string }
           - { label: Positioning line, name: positioning, widget: text }
           - { label: Small details under the intro, name: meta, widget: list, collapsed: false, field: { label: Detail, name: detail, widget: string } }
+          - { label: Homepage image, name: hero_image, widget: image, required: false, hint: 'Shown full width at the top of the homepage. If you set an image here, it is used instead of the video.' }
           - label: Homepage video
             name: hero_video
             widget: file
@@ -117,11 +120,10 @@ collections:
             choose_url: false
             media_folder: /public/media
             public_folder: /media
-            hint: 'An MP4 under ~10 MB plays best. It loops silently. Leave empty to use the image below instead.'
+            hint: 'Optional. Used only when Homepage image is empty. An MP4 under ~10 MB plays best; it loops silently.'
           - { label: Video placeholder image, name: hero_poster, widget: image, required: false, hint: 'Shown while the video loads.' }
-          - { label: Homepage image (if no video), name: hero_image, widget: image, required: false }
-          - { label: Caption under video (left), name: hero_caption, widget: string, required: false }
-          - { label: Caption under video (right), name: hero_caption_right, widget: string, required: false }
+          - { label: Caption under image/video (left), name: hero_caption, widget: string, required: false }
+          - { label: Caption under image/video (right), name: hero_caption_right, widget: string, required: false }
           - { label: About — small heading, name: about_label, widget: string, required: false }
           - { label: About — statement, name: about_statement, widget: text }
           - { label: Headshot, name: headshot, widget: image, required: false }

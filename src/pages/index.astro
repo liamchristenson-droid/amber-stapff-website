@@ -3,23 +3,18 @@ import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { getSettings, getProjects, layoutRows, projectUrl } from '../lib/content';
+import { getSettings, getProjects, projectUrl } from '../lib/content';
 
 const s = await getSettings();
 const projects = await getProjects();
-const rows = layoutRows(projects);
-const shapeClass = { landscape: 'r-landscape', portrait: 'r-portrait', square: 'r-square', wide: 'r-wide' } as const;
-const sizesFor = (w: string) =>
-  w === 'w-12' ? '(min-width: 1440px) 1328px, 100vw'
-  : w === 'w-7' ? '(min-width: 900px) 58vw, 100vw'
-  : w === 'w-4' ? '(min-width: 900px) 32vw, 100vw'
-  : '(min-width: 900px) 45vw, 100vw';
+// Every homepage cover is shown landscape (5:3); "Crop focus" picks which part of the image stays in frame.
+const focus = { center: '50% 50%', top: '50% 15%', bottom: '50% 85%', left: '20% 50%', right: '80% 50%' } as const;
 ---
 <Base title={`${s.name} — Creative Designer, Graphic Producer & Event Stylist`}>
   <Header name={s.name} home />
   <main id="main">
-    <section id="top" class="wrap hero">
-      <h1 class="hero-name">{s.name}</h1>
+    <section id="top" class="wrap wrap-wide hero">
+      <h1 class="sr-only">{s.name}</h1>
       <div class="hero-row">
         <p class="lede">{s.positioning}</p>
         {s.meta.length > 0 && (
@@ -28,63 +23,62 @@ const sizesFor = (w: string) =>
       </div>
     </section>
 
-    {(s.hero_video || s.hero_image) && (
-      <section class="wrap" aria-label="Showreel">
-        <div class="reel">
-          {s.hero_video ? (
-            <>
-              <video
-                id="reel"
-                src={s.hero_video.replace(/^\//, '')}
-                poster={s.hero_poster?.src}
-                autoplay
-                muted
-                loop
-                playsinline
-                preload="metadata"
-                aria-label={s.hero_caption ?? 'Showreel'}
-              ></video>
-              <button class="reel-toggle" type="button" id="reel-toggle" aria-pressed="false">Pause</button>
-            </>
-          ) : (
-            s.hero_image && <Image src={s.hero_image} alt="" widths={[1100, 2000]} sizes="100vw" loading="eager" />
+    {(s.hero_image || s.hero_video) && (
+      <section class="wrap wrap-wide" aria-label="Featured">
+        <figure class="hero-figure">
+          <div class="reel">
+            {s.hero_image ? (
+              <Image src={s.hero_image} alt={s.hero_caption ?? ''} widths={[1100, 1800, 2600]} sizes="(min-width: 1680px) 1580px, 100vw" loading="eager" fetchpriority="high" />
+            ) : (
+              <>
+                <video
+                  id="reel"
+                  src={s.hero_video!.replace(/^\//, '')}
+                  poster={s.hero_poster?.src}
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  aria-label={s.hero_caption ?? 'Showreel'}
+                ></video>
+                <button class="reel-toggle" type="button" id="reel-toggle" aria-pressed="false">Pause</button>
+              </>
+            )}
+          </div>
+          {(s.hero_caption || s.hero_caption_right) && (
+            <figcaption class="caption-row label"><span>{s.hero_caption}</span><span>{s.hero_caption_right}</span></figcaption>
           )}
-        </div>
-        {(s.hero_caption || s.hero_caption_right) && (
-          <div class="caption-row label"><span>{s.hero_caption}</span><span>{s.hero_caption_right}</span></div>
-        )}
+        </figure>
       </section>
     )}
 
-    <section id="work" class="wrap work">
-      <div class="section-head">
-        <h2>Selected Work</h2>
+    <section id="work" class="wrap wrap-wide work" aria-labelledby="work-title">
+      <div class="section-head work-head">
+        <h2 id="work-title">Selected Work</h2>
         <span class="label">({projects.length})</span>
       </div>
-      <div class="grid">
-        {rows.map((row) => (
-          <div class="grid-row">
-            {row.map(({ project: p, width, drop }) => (
-              <a class:list={['card', width, drop]} href={projectUrl(p)}>
-                <Image
-                  class:list={['media', shapeClass[p.data.cover_shape]]}
-                  src={p.data.cover}
-                  alt={p.data.cover_alt}
-                  widths={[640, 1280]}
-                  sizes={sizesFor(width)}
-                />
-                <div class="card-text">
-                  <div class="card-title">
-                    <strong>{p.data.title}</strong>
-                    {p.data.summary && <span>{p.data.summary}</span>}
-                  </div>
-                  {p.data.year && <span class="card-year">{p.data.year}</span>}
-                </div>
-              </a>
-            ))}
+      {projects.map((p) => (
+        <article class="row4 project-row">
+          <span class="label col-label">{p.data.year}</span>
+          <div class="col-text">
+            <h3 class="row-heading"><a href={projectUrl(p)}>{p.data.title}</a></h3>
+            {(p.data.intro || p.data.summary) && <p class="row-body">{p.data.intro && !p.data.intro.startsWith('[') ? p.data.intro : p.data.summary}</p>}
+            <a class="more" href={projectUrl(p)} aria-label={`View project: ${p.data.title}`}>View project →</a>
           </div>
-        ))}
-      </div>
+          <a class="col-media" href={projectUrl(p)} tabindex="-1" aria-hidden="true">
+            <Image
+              class="media r-cover"
+              src={p.data.cover}
+              alt={p.data.cover_alt}
+              widths={[640, 1100, 1600]}
+              sizes="(min-width: 900px) 50vw, 100vw"
+              style={`object-position: ${focus[p.data.cover_focus]}`}
+            />
+            <span class="caption"><span>{p.data.client ?? p.data.title}</span><small>{[p.data.location, p.data.working_under && `With ${p.data.working_under}`].filter(Boolean).join(' · ')}</small></span>
+          </a>
+        </article>
+      ))}
     </section>
 
     <section id="about" class="wrap about">

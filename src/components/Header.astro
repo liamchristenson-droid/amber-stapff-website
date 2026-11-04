@@ -3,7 +3,7 @@ interface Props { name: string; home?: boolean }
 const { name, home = false } = Astro.props;
 const base = home ? '' : '/index.html';
 ---
-<header class="wrap site-header">
+<header class="wrap wrap-wide site-header">
   <a class="wordmark" href={home ? '#top' : '/index.html'}>{name}</a>
   <nav class="nav" aria-label="Primary">
     <a href={`${base}#work`}>Work</a>
