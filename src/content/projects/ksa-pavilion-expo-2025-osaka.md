@@ -1,7 +1,7 @@
 ---
 title: KSA Pavilion, Expo 2025 Osaka
 published: true
-order: 3
+order: 4
 summary: THA Staffing & Beyond Limits
 cover: ../../assets/uploads/aj209605.jpg
 cover_alt: Speakers on stage in front of a vast landscape screen at the KSA Pavilion
