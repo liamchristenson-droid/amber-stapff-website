@@ -1,5 +1,5 @@
 ---
-title: "2026 AFC Opening Ceremony "
+title: "AFC Ceremonies, 2026  "
 published: true
 order: 5
 summary: Rizer
