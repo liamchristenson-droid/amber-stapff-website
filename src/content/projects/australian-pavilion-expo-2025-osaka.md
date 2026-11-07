@@ -16,7 +16,7 @@ location: Osaka, Japan
 year: "2025"
 role: Graphic Design, Large-scale Print, Print file Preparation, Visual
   Storytelling, On-Site Creative Coordination, Installer Collaboration
-working_under: ES Global
+working_under: Engaged by ES Global
 credits: StageKings, Hufton+Crow, SS Co. Ltd / Sakai Ichirou
 overview: The exhibition takes visitors on a sensory journey through Land, Sea,
   and Sky Country.  ES GLOBAL and the Artistic Director Eamon Darcy led the
