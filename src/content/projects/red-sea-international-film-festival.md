@@ -13,8 +13,9 @@ intro: A stage for stories without borders. Celebrating the voices, visions and
 client: Red Sea International Film Festival
 location: Jeddah, Saudi Arabia
 year: "2023"
-role: Graphic design, site styling, large-scale print, print file preparation,
-  installer collaboration
+role: Creative Pitch Development, Graphic Design, Large-scale Print, Print file
+  Preparation, Visual Storytelling, Site Styling, On-Site Creative Coordination,
+  Installer Collaboration
 working_under: TAIT
 credits: TAIT Towers
 overview: The Red Sea International Film Festival in Jeddah is a world-class
