@@ -21,8 +21,9 @@ stats:
     label: Pitch decks & RFP responses
   - value: "9"
     label: Countries worked
-worked_with: TAIT, ES Global, Rizer, Done+Dusted, Identity Global, THA Staffing
-  & Beyond Limits.
+worked_with: |-
+  TAIT, ES Global, Rizer, Done+Dusted, Identity Global, 
+  THA Staffing & Beyond Limits.
 countries: |-
   Australia, USA, UAE, Saudi Arabia, Japan, Korea, 
   Fiji, Bangkok & Singapore
