@@ -1,5 +1,5 @@
 ---
-title: "AFC Ceremonies, 2026  "
+title: AFC Women's Asian Cup 2026
 published: true
 order: 5
 summary: Rizer
