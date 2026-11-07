@@ -23,7 +23,9 @@ stats:
     label: Countries worked
 worked_with: TAIT, ES Global, Rizer, Done+Dusted, Identity Global, THA Staffing
   & Beyond Limits.
-countries: Australia, USA, UAE, Saudi Arabia, Japan, Korea, Fiji, Bangkok & Singapore
+countries: |-
+  Australia, USA, UAE, Saudi Arabia, Japan, Korea, 
+  Fiji, Bangkok & Singapore
 contact_heading: Great ideas deserve great conversations. Let's talk.
 email: hello@amberstapff.com.au
 services:
