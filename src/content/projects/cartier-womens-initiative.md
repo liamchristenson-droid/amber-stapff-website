@@ -8,7 +8,9 @@ cover_alt: Curved exhibition gallery for the Cartier Women's Initiative
 cover_focus: center
 hero: ../../assets/uploads/cartier-women-s-initiative-02.jpg
 hero_alt: Circular exhibition space beneath a ring light
-intro: ""
+intro: Illuminating the stories of women changing the world. Translating Women
+  Lighting the Path into engaging physical experiences for Cartier’s 20th
+  anniversary celebration.
 client: Cartier Women's Initiative
 location: Bangkok
 year: "2026"
