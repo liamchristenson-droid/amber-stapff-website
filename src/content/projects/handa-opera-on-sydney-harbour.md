@@ -2,7 +2,7 @@
 title: Handa Opera on Sydney Harbour
 published: true
 order: 7
-summary: Opera Australia — Event branding & site styling
+summary: "Opera Australia "
 cover: ../../assets/uploads/handa-opera-15.jpg
 cover_alt: Fireworks over the Handa Opera stage on Sydney Harbour
 cover_focus: center
@@ -14,8 +14,9 @@ intro: Ten seasons of immersive event branding for one of the world's most
 client: Opera Australia
 location: Sydney, Australia
 year: 2015–2025
-role: Lead Designer — graphic design, site styling, large-scale print, print
-  file preparation, installer collaboration
+role: Graphic Design, Large-scale Print, Print file Preparation, Visual
+  Storytelling, On-Site Creative Coordination, Installer Collaboration
+working_under: Opera Australia
 credits: Hamilton Lund, Guy Davies, Daniel Boud, Jamie Williams
 overview: Handa Opera on Sydney Harbour is one of Australia's most celebrated
   large-scale outdoor events — a spectacular open-air opera experience set on
