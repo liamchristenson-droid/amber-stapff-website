@@ -2,7 +2,7 @@
 title: Red Sea International Film Festival
 published: true
 order: 6
-summary: TAIT
+summary: TAIT Towers
 cover: ../../assets/uploads/red-sea-film-festival-07.jpg
 cover_alt: Evening crowd and stage lighting at the Red Sea International Film Festival
 cover_focus: center
