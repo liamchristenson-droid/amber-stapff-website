@@ -14,7 +14,7 @@ intro: "As part of the ES GLOBAL team, I contributed to the delivery of the
 client: Australian Pavilion, Expo 2025 Osaka
 location: Osaka, Japan
 year: "2025"
-role: Graphic design, Large-scale Print, Print file Preparation, Visual
+role: Graphic Design, Large-scale Print, Print file Preparation, Visual
   Storytelling, On-Site Creative Coordination, Installer Collaboration
 working_under: ES Global
 credits: StageKings, Hufton+Crow, SS Co. Ltd / Sakai Ichirou
