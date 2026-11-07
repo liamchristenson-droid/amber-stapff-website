@@ -1,6 +1,6 @@
 ---
 title: Colourblind Lighting
-published: true
+published: false
 order: 8
 summary: Website design
 cover: ../../assets/uploads/colourblind-04.jpg
