@@ -51,5 +51,9 @@ gallery:
         alt: Exhibition walkway with framed works
       - image: ../../assets/uploads/cartier-women-s-initiative-04.jpg
         alt: Theatre with red seating and branded stage
+  - layout: pair
+    images:
+      - image: ../../assets/uploads/20260610_cartier_cwi26_exhibition-57951-large.webp
+      - image: ../../assets/uploads/20260610_cartier_cwi26_exhibition-57964-large.webp
 cover_shape: landscape
 ---
