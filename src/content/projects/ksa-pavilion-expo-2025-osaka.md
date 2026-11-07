@@ -57,23 +57,23 @@ gallery:
         alt: Celebration crowd in the pavilion
       - image: ../../assets/uploads/ksa-osaka-2025-09.jpg
         alt: Visitors holding green fans
-      - image: ../../assets/uploads/ksa-osaka-2025-10.jpg
+      - image: ../../assets/uploads/moha1035.jpg
         alt: Close-up of hands weaving on a loom
   - layout: full
     images:
-      - image: ../../assets/uploads/ksa-osaka-2025-16.jpg
+      - image: ../../assets/uploads/p13_9709.jpg
         alt: Forum stage with a panoramic landscape screen
   - layout: pair
     images:
-      - image: ../../assets/uploads/ksa-osaka-2025-13.jpg
+      - image: ../../assets/uploads/w.bs-8.jpg
         alt: Marching performers in green robes
       - image: ../../assets/uploads/ksa-osaka-2025-21.jpg
         alt: Weaver at work beneath the timber pavilion
   - layout: pair
     images:
-      - image: ../../assets/uploads/ksa-osaka-2025-11.jpg
+      - image: ../../assets/uploads/moha0996.jpg
         alt: Visitor scanning an interactive display
-      - image: ../../assets/uploads/ksa-osaka-2025-26.jpg
+      - image: ../../assets/uploads/7tm_1886.jpg
         alt: Panel discussion on the forum stage
 cover_shape: portrait
 ---
