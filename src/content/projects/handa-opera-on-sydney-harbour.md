@@ -48,11 +48,11 @@ gallery:
         alt: Sunset over the harbour stage and seating, Sydney skyline behind
   - layout: trio
     images:
-      - image: ../../assets/uploads/handa-opera-02.jpg
+      - image: ../../assets/uploads/491935587_1218593976302951_2765064843941211678_n.jpg
         alt: Faceted gold pendant lights in a hospitality lounge
-      - image: ../../assets/uploads/handa-opera-25.jpg
+      - image: ../../assets/uploads/general2-photocredit-daniel-boud.jpg.jpg
         alt: Northern Terrace neon sign at a styled bar entrance
-      - image: ../../assets/uploads/handa-opera-06.jpg
+      - image: ../../assets/uploads/hosh_wss_26.03.19_guydaviesphotographer_327.jpg
         alt: West Side Story stage under red fireworks
   - layout: pair
     images:
