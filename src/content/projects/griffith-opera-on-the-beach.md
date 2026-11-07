@@ -13,8 +13,8 @@ intro: Where the beach becomes the stage. Creating a striking visual identity
 client: Griffith Opera on the Beach
 location: Gold Coast, Australia
 year: "2017"
-role: Graphic design, illustration, large-scale print, print file preparation,
-  installer collaboration
+role: Graphic Design, Large-scale Print, Print file Preparation, Visual
+  Storytelling, On-Site Creative Coordination, Installer Collaboration
 working_under: Opera Australia
 overview: Griffith Opera on the Beach transforms the Gold Coast coastline into a
   dramatic open-air opera stage. For the production of Aida, I was engaged to
