@@ -8,12 +8,14 @@ cover_alt: Aida-themed geometric hoardings with guests
 cover_focus: center
 hero: ../../assets/uploads/griffith-opera-on-the-beach-05.jpg
 hero_alt: Terracotta diamond-patterned hoarding with sponsor logos
-intro: A bold, transportive visual world for Aida, set against sand, sea and sky.
+intro: Where the beach becomes the stage. Creating a striking visual identity
+  that celebrates the drama and grandeur of Aida.
 client: Griffith Opera on the Beach
 location: Gold Coast, Australia
 year: "2017"
 role: Graphic design, illustration, large-scale print, print file preparation,
   installer collaboration
+working_under: Opera Australia
 overview: Griffith Opera on the Beach transforms the Gold Coast coastline into a
   dramatic open-air opera stage. For the production of Aida, I was engaged to
   design a bold and vibrant visual identity that reflected the power of the
