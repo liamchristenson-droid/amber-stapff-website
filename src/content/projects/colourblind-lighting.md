@@ -1,7 +1,7 @@
 ---
 title: Colourblind Lighting
 published: true
-order: 6
+order: 8
 summary: Website design
 cover: ../../assets/uploads/colourblind-04.jpg
 cover_alt: Colourblind website project grid on a dark background
