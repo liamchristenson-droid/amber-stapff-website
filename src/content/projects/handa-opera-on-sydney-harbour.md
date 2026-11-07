@@ -42,12 +42,6 @@ outcome: From bold classics to Broadway adaptations, my work has helped shape
   experience and bring storytelling to life in one of the world's most iconic
   outdoor venues.
 gallery:
-  - layout: pair
-    images:
-      - image: ../../assets/uploads/handa-opera-05.jpg
-        alt: La Bohème red carpet entrance with branded hoarding
-      - image: ../../assets/uploads/handa-opera-01.jpg
-        alt: Opera Australia planter styling with white roses
   - layout: full
     images:
       - image: ../../assets/uploads/handa-opera-18.jpg
