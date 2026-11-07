@@ -14,7 +14,8 @@ intro: "As part of the delivery team for the AFC Women’s Asian Cup opening and
 client: AFC Women's Asian Cup 2026
 location: Perth, Australia
 year: "2026"
-role: Graphic Designer
+role: Creative Pitch Development, Graphic Design, Large-scale Print, Print file
+  Preparation
 working_under: Rizer
 overview: My involvement began during the proposal phase, where I designed the
   pitch deck that helped secure the project. Following the successful bid, I
