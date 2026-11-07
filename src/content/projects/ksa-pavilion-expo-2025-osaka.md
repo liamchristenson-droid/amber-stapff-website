@@ -8,8 +8,10 @@ cover_alt: Speakers on stage in front of a vast landscape screen at the KSA Pavi
 cover_focus: center
 hero: ../../assets/uploads/aj209605.jpg
 hero_alt: Panel discussion staged inside a lit cave set, KSA Pavilion
-intro: Exploring the past. Imagining the future. Creating visual experiences
-  that celebrate the many dimensions of Saudi Arabia at Expo 2025 Osaka.
+intro: >-
+  Exploring the past. Imagining the future. 
+
+  Creating visual experiences that celebrate the many dimensions of Saudi Arabia at Expo 2025 Osaka.
 client: Kingdom of Saudi Arabia Pavilion
 location: Osaka, Japan
 year: "2025"
