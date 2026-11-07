@@ -14,7 +14,7 @@ intro: Illuminating the stories of women changing the world. Translating Women
 client: Cartier Women's Initiative
 location: Bangkok
 year: "2026"
-role: "   Large-Scale Print, Interactive Experience Design, Environmental
+role: "  Large-Scale Print, Interactive Experience Design, Environmental
   Graphics, Print File Preparation, Visual Storytelling"
 working_under: Rizer
 credits: Rizer
