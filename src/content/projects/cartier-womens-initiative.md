@@ -8,7 +8,7 @@ cover_alt: Curved exhibition gallery for the Cartier Women's Initiative
 cover_focus: center
 hero: ../../assets/uploads/cartier-women-s-initiative-02.jpg
 hero_alt: Circular exhibition space beneath a ring light
-intro: "[Copy to come — Amber to supply]"
+intro: Hello amber! Here is some published content. Liam
 client: Cartier Women's Initiative
 location: "[Location to confirm]"
 year: "[Year]"
