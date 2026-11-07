@@ -3,7 +3,7 @@ title: "2026 AFC Opening Ceremony "
 published: true
 order: 5
 summary: Engaged by Rizer
-cover: ../../assets/uploads/afc-05.jpg
+cover: ../../assets/uploads/52a454b4-1890-49a7-8c34-973d04e25719.jpg
 cover_alt: Performers beneath a white ring structure at an opening ceremony
 cover_focus: center
 hero: ../../assets/uploads/afc-01.jpg
@@ -46,7 +46,7 @@ gallery:
         alt: Performers mid-routine with lighting towers
   - layout: full
     images:
-      - image: ../../assets/uploads/afc-04.jpg
+      - image: ../../assets/uploads/86714ee2-19ae-4899-9486-964b9cfe6fb8.jpg
         alt: Wide view of the ceremony performance
   - layout: pair
     images:
