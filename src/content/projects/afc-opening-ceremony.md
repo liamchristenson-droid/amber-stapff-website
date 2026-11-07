@@ -8,19 +8,22 @@ cover_alt: Performers beneath a white ring structure at an opening ceremony
 cover_focus: center
 hero: ../../assets/uploads/afc-01.jpg
 hero_alt: Opening ceremony performance on a white circular stage
-intro: "As part of the delivery team for the AFC Women’s Asian Cup opening and
-  closing ceremonies, I worked with the Rizer team to support the creative
-  development and visual execution of key ceremony elements. "
+intro: A celebration of women’s football on an international stage. Creating
+  powerful visual moments to mark the opening and closing of the AFC Women’s
+  Asian Cup 2026.
 client: AFC Women's Asian Cup 2026
 location: Perth, Australia
 year: "2026"
 role: Creative Pitch Development, Graphic Design, Large-scale Print, Print file
   Preparation
 working_under: Rizer
-overview: My involvement began during the proposal phase, where I designed the
-  pitch deck that helped secure the project. Following the successful bid, I
-  continued working on the event, designing large-scale visual elements for both
-  the opening and closing ceremonies.
+overview: As part of the delivery team for the AFC Women’s Asian Cup opening and
+  closing ceremonies, I worked with the Rizer team to support the creative
+  development and visual execution of key ceremony elements. My involvement
+  began during the proposal phase, where I designed the pitch deck that helped
+  secure the project. Following the successful bid, I continued working on the
+  event, designing large-scale visual elements for both the opening and closing
+  ceremonies.
 challenge: The project required translating the creative vision for a major
   international sporting event into impactful physical elements within a stadium
   environment. Designs needed to work at monumental scale, be clearly visible to
