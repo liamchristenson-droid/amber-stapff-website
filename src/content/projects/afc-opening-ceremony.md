@@ -17,6 +17,7 @@ year: "2026"
 role: Creative Pitch Development, Graphic Design, Large-scale Print, Print file
   Preparation
 working_under: Rizer
+credits: "Rizer & AFC "
 overview: As part of the delivery team for the AFC Women’s Asian Cup opening and
   closing ceremonies, I worked with the Rizer team to support the creative
   development and visual execution of key ceremony elements. My involvement
@@ -60,7 +61,7 @@ gallery:
         alt: Performers in white costumes, black and white
   - layout: full
     images:
-      - image: ../../assets/uploads/afc-08.jpg
+      - image: ../../assets/uploads/1789119896-1785979919-gflip-17.avif
         alt: Black and white crowd and performer moment
 cover_shape: wide
 ---
