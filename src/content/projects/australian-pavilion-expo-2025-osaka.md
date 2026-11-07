@@ -8,9 +8,8 @@ cover_alt: The Australian Pavilion at Expo 2025 Osaka at dusk
 cover_focus: center
 hero: ../../assets/uploads/australia-osaka-2025-08.jpg
 hero_alt: Lit forest corridor inside the Australian Pavilion exhibition
-intro: "As part of the ES GLOBAL team, I contributed to the delivery of the
-  Australian Pavilion at Expo 2025 Osaka, an immersive cultural experience
-  inspired by the national theme Chasing the Sun. "
+intro: From Australia to Osaka, a story worth sharing. Celebrating Australian
+  culture and creativity through an immersive pavilion experience.
 client: Australian Pavilion, Expo 2025 Osaka
 location: Osaka, Japan
 year: "2025"
@@ -18,11 +17,13 @@ role: Graphic Design, Large-scale Print, Print file Preparation, Visual
   Storytelling, On-Site Creative Coordination, Installer Collaboration
 working_under: Engaged by ES Global
 credits: StageKings, Hufton+Crow, SS Co. Ltd / Sakai Ichirou
-overview: The exhibition takes visitors on a sensory journey through Land, Sea,
-  and Sky Country.  ES GLOBAL and the Artistic Director Eamon Darcy led the
-  execution of this project, proudly collaborating with a diverse team of
-  Australian and Japanese creatives, designers, builders, and installers to
-  bring the Pavilion to life.
+overview: As part of the ES GLOBAL team, I contributed to the delivery of the
+  Australian Pavilion at Expo 2025 Osaka, an immersive cultural experience
+  inspired by the national theme Chasing the Sun. The exhibition takes visitors
+  on a sensory journey through Land, Sea, and Sky Country.  ES GLOBAL and the
+  Artistic Director Eamon Darcy led the execution of this project, proudly
+  collaborating with a diverse team of Australian and Japanese creatives,
+  designers, builders, and installers to bring the Pavilion to life.
 challenge: To create a graphic system that felt both emotive and respectful,
   visually engaging yet aligned with the spatial design. The graphics needed to
   support storytelling and enhance visitor immersion, all while adhering to
