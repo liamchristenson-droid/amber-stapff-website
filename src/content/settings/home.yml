@@ -1,36 +1,42 @@
 name: Amber Stapff
-positioning: Creative Designer, Graphic Producer & Event Stylist — specialising in pitch decks, global events and brand experiences.
+positioning: Creative Designer, Graphic Producer & Event Stylist — specialising
+  in pitch decks, global events and brand experiences.
 meta:
-- Melbourne, Australia
-- Working globally
-- 16+ years
+  - Melbourne, Australia
+  - Working globally
+  - 16+ years
 hero_video: /media/hero-reel.mp4
 hero_poster: ../../assets/uploads/hero-reel-poster.jpg
 hero_caption: Showreel
-hero_caption_right: '2026'
+hero_caption_right: "2026"
 about_label: Established. Creative. Refined. Global. Confident.
-about_statement: A trusted specialist in pitch decks and design for global events — taking ideas from first concept through to production-ready artwork and installation.
-headshot: ../../assets/uploads/00-other-bits-01.jpg
+about_statement: A trusted specialist in pitch decks and design for global
+  events — taking ideas from first concept through to production-ready artwork
+  and installation.
+headshot: ../../assets/uploads/natural-dark-haired-professional-headshot.png
 stats:
-- value: 16+
-  label: Years of experience
-- value: 450+
-  label: Pitch decks & RFP responses
-- value: '7'
-  label: Countries worked
+  - value: 16+
+    label: Years of experience
+  - value: 450+
+    label: Pitch decks & RFP responses
+  - value: "7"
+    label: Countries worked
 worked_with: TAIT, ES Global, Rizer, THA Staffing, Beyond Limits, Opera Australia
 countries: Australia, USA, UAE, Saudi Arabia, Japan, Korea, Singapore
 contact_heading: Great ideas deserve great conversations. Let's talk.
 email: hello@amberstapff.com.au
 services:
-- title: Pitch Deck & Presentation Design
-  text: High-end pitch decks, proposals, presentation systems and storytelling.
-- title: Event & Experience Design
-  text: Creative direction, visual identity application, environmental graphics and event styling.
-- title: Graphic Production
-  text: Taking creative concepts through to detailed production-ready artwork across print, digital, signage and large-format applications.
-- title: Brand & Visual Design
-  text: Brand systems, campaign graphics, collateral and supporting visual assets.
-- title: Creative Partnership
-  text: Working directly with agencies and production teams as an embedded freelance creative resource.
+  - title: Pitch Deck & Presentation Design
+    text: High-end pitch decks, proposals, presentation systems and storytelling.
+  - title: Event & Experience Design
+    text: Creative direction, visual identity application, environmental graphics
+      and event styling.
+  - title: Graphic Production
+    text: Taking creative concepts through to detailed production-ready artwork
+      across print, digital, signage and large-format applications.
+  - title: Brand & Visual Design
+    text: Brand systems, campaign graphics, collateral and supporting visual assets.
+  - title: Creative Partnership
+    text: Working directly with agencies and production teams as an embedded
+      freelance creative resource.
 footer_location: Melbourne, Australia — Working globally
