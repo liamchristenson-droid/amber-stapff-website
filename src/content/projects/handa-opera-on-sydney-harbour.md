@@ -1,7 +1,7 @@
 ---
 title: Handa Opera on Sydney Harbour
 published: true
-order: 11
+order: 7
 summary: Opera Australia — Event branding & site styling
 cover: ../../assets/uploads/handa-opera-15.jpg
 cover_alt: Fireworks over the Handa Opera stage on Sydney Harbour
