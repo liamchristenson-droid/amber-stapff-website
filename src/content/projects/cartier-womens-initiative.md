@@ -2,7 +2,7 @@
 title: Cartier Women's Initiative
 published: true
 order: 1
-summary: "Engaged by Rizer "
+summary: "Rizer "
 cover: ../../assets/uploads/cartier-women-s-initiative-01.jpg
 cover_alt: Curved exhibition gallery for the Cartier Women's Initiative
 cover_focus: center
