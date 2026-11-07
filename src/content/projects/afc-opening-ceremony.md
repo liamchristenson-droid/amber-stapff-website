@@ -2,7 +2,7 @@
 title: "2026 AFC Opening Ceremony "
 published: true
 order: 5
-summary: Engaged by Rizer
+summary: Rizer
 cover: ../../assets/uploads/52a454b4-1890-49a7-8c34-973d04e25719.jpg
 cover_alt: Performers beneath a white ring structure at an opening ceremony
 cover_focus: center
