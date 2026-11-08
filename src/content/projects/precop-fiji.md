@@ -6,8 +6,8 @@ summary: "Event Planning Group "
 cover: ../../assets/uploads/prem-kurumpanai-b8rqn7wtu34-unsplash.jpg
 cover_focus: center
 hero: ../../assets/uploads/prem-kurumpanai-b8rqn7wtu34-unsplash.jpg
-intro: Creating a sense of place and connection for a global gathering, where
-  meaningful conversations shape a shared future.
+intro: Creating a sense of connection for a global gathering, where meaningful
+  conversations shape a shared future.
 client: DCCEEW
 location: Tuvalu, Fiji
 year: "2026"
