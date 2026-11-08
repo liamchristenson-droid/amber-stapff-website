@@ -1,7 +1,7 @@
 ---
 title: "PreCop Fiji "
 published: true
-order: 8
+order: 1
 summary: "Event Planning Group "
 cover: ../../assets/uploads/prem-kurumpanai-b8rqn7wtu34-unsplash.jpg
 cover_focus: center
