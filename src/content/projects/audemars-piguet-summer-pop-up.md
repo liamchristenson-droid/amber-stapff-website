@@ -47,12 +47,12 @@ gallery:
   - layout: pair
     images:
       - image: ../../assets/uploads/2.png
-      - image: ../../assets/uploads/3.png
+      - image: ../../assets/uploads/7.png
   - layout: full
     images:
       - image: ../../assets/uploads/4.png
   - layout: pair
     images:
-      - image: ../../assets/uploads/1.png
+      - image: ../../assets/uploads/3.png
       - image: ../../assets/uploads/8.png
 ---
