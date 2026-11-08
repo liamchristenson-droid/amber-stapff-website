@@ -45,8 +45,8 @@ outcome: The completed pop-up combined vibrant campaign graphics, detailed
 gallery:
   - layout: pair
     images:
+      - image: ../../assets/uploads/2.png
       - image: ../../assets/uploads/3.png
-      - image: ../../assets/uploads/5.png
   - layout: full
     images:
       - image: ../../assets/uploads/6.png
