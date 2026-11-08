@@ -20,6 +20,7 @@ year: "2026"
 role: "   Large-Scale Print, Interactive Experience Design, Print File
   Preparation, Visual Storytelling"
 working_under: Rizer
+credits: Rizer
 overview: Working under Rizer, I supported the graphic production of Audemars
   Piguet's Powerful Summer pop-up in Bangkok. The two-week activation brought
   the luxury watchmaker's global campaign into a physical retail environment,
