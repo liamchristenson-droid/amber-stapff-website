@@ -9,7 +9,7 @@ cover_focus: center
 hero: ../../assets/uploads/griffith-opera-on-the-beach-05.jpg
 hero_alt: Terracotta diamond-patterned hoarding with sponsor logos
 intro: Where the beach becomes the stage. Creating a striking visual identity
-  that celebrates the drama and grandeur of Aida.
+  that celebrates the grandeur of Aida.
 client: Griffith Opera on the Beach
 location: Gold Coast, Australia
 year: "2017"
