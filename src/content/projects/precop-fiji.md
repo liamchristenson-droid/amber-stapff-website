@@ -9,7 +9,7 @@ hero: ../../assets/uploads/prem-kurumpanai-b8rqn7wtu34-unsplash.jpg
 intro: Creating a sense of place and connection for a global gathering, where
   meaningful conversations shape a shared future.
 client: DCCEEW
-location: "Fiji "
+location: Tuvalu, Fiji
 year: "2026"
 role: Graphic Design, Large-scale Print, Print file Preparation
 working_under: "Event Planning Group "
