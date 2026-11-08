@@ -1,5 +1,5 @@
 ---
-title: "PreCop Fiji "
+title: "Pre-Cop Fiji "
 published: true
 order: 1
 summary: "Event Planning Group "
