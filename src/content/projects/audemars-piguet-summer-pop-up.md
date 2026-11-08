@@ -50,7 +50,7 @@ gallery:
       - image: ../../assets/uploads/3.png
   - layout: full
     images:
-      - image: ../../assets/uploads/6.png
+      - image: ../../assets/uploads/4.png
   - layout: pair
     images:
       - image: ../../assets/uploads/1.png
