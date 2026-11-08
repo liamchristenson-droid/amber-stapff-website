@@ -1,6 +1,6 @@
 ---
 title: Griffith Opera on the Beach — Aida
-published: true
+published: false
 order: 9
 summary: Visual identity, Gold Coast
 cover: ../../assets/uploads/griffith-opera-on-the-beach-03.jpg
