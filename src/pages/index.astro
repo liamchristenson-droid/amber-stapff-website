@@ -9,6 +9,17 @@ const s = await getSettings();
 const projects = await getProjects();
 // Every homepage cover is shown landscape (5:3); "Crop focus" picks which part of the image stays in frame.
 const focus = { center: '50% 50%', top: '50% 15%', bottom: '50% 85%', left: '20% 50%', right: '80% 50%' } as const;
+// Two portrait projects next to each other in the order share one row; a lone portrait shows as a normal landscape row.
+type Row = { kind: 'single'; p: (typeof projects)[number] } | { kind: 'pair'; a: (typeof projects)[number]; b: (typeof projects)[number] };
+const rows: Row[] = [];
+for (let i = 0; i < projects.length; i++) {
+  const p = projects[i], n = projects[i + 1];
+  if (p.data.home_layout === 'portrait' && n?.data.home_layout === 'portrait') { rows.push({ kind: 'pair', a: p, b: n }); i++; }
+  else rows.push({ kind: 'single', p });
+}
+const sub = (p: (typeof projects)[number]) => [p.data.location, p.data.working_under && `Engaged by ${p.data.working_under}`].filter(Boolean).join(' · ');
+const blurb = (p: (typeof projects)[number]) => (p.data.intro && !p.data.intro.startsWith('[') ? p.data.intro : p.data.summary);
+const years = (a: (typeof projects)[number], b: (typeof projects)[number]) => [...new Set([a.data.year, b.data.year].filter(Boolean))].join(' / ');
 ---
 <Base title={`${s.name} — Creative Designer, Graphic Producer & Event Stylist`}>
   <Header name={s.name} home />
@@ -58,25 +69,51 @@ const focus = { center: '50% 50%', top: '50% 15%', bottom: '50% 85%', left: '20%
         <h2 id="work-title">Selected Work</h2>
         <span class="label">({projects.length})</span>
       </div>
-      {projects.map((p) => (
+      {rows.map((r) => r.kind === 'single' ? (
         <article class="row4 project-row">
-          <span class="label col-label">{p.data.year}</span>
+          <span class="label col-label">{r.p.data.year}</span>
           <div class="col-text">
-            <h3 class="row-heading"><a href={projectUrl(p)}>{p.data.title}</a></h3>
-            {(p.data.intro || p.data.summary) && <p class="row-body">{p.data.intro && !p.data.intro.startsWith('[') ? p.data.intro : p.data.summary}</p>}
-            <a class="more" href={projectUrl(p)} aria-label={`View project: ${p.data.title}`}>View project →</a>
+            <h3 class="row-heading"><a href={projectUrl(r.p)}>{r.p.data.title}</a></h3>
+            {blurb(r.p) && <p class="row-body">{blurb(r.p)}</p>}
+            <a class="more" href={projectUrl(r.p)} aria-label={`View project: ${r.p.data.title}`}>View project →</a>
           </div>
-          <a class="col-media" href={projectUrl(p)} tabindex="-1" aria-hidden="true">
+          <a class="col-media" href={projectUrl(r.p)} tabindex="-1" aria-hidden="true">
             <Image
               class="media r-cover"
-              src={p.data.cover}
-              alt={p.data.cover_alt}
+              src={r.p.data.cover}
+              alt={r.p.data.cover_alt}
               widths={[640, 1100, 1600]}
               sizes="(min-width: 900px) 50vw, 100vw"
-              style={`object-position: ${focus[p.data.cover_focus]}`}
+              style={`object-position: ${focus[r.p.data.cover_focus]}`}
             />
-            <span class="caption"><span>{p.data.client ?? p.data.title}</span><small>{[p.data.location, p.data.working_under && `With ${p.data.working_under}`].filter(Boolean).join(' · ')}</small></span>
+            <span class="caption"><span>{r.p.data.client ?? r.p.data.title}</span><small>{sub(r.p)}</small></span>
           </a>
+        </article>
+      ) : (
+        <article class="row4 project-row pair-row">
+          <span class="label col-label">{years(r.a, r.b)}</span>
+          <div class="col-text pair-text">
+            {[r.a, r.b].map((p) => (
+              <div class="pair-item">
+                <h3 class="row-heading"><a href={projectUrl(p)}>{p.data.title}</a></h3>
+                {blurb(p) && <p class="row-body">{blurb(p)}</p>}
+                <a class="more" href={projectUrl(p)} aria-label={`View project: ${p.data.title}`}>View project →</a>
+              </div>
+            ))}
+          </div>
+          {[r.a, r.b].map((p, i) => (
+            <a class={`col-half ${i === 0 ? 'first' : 'second'}`} href={projectUrl(p)} tabindex="-1" aria-hidden="true">
+              <Image
+                class="media r-port"
+                src={p.data.cover}
+                alt={p.data.cover_alt}
+                widths={[480, 800, 1200]}
+                sizes="(min-width: 900px) 25vw, 50vw"
+                style={`object-position: ${focus[p.data.cover_focus]}`}
+              />
+              <span class="caption"><span>{p.data.client ?? p.data.title}</span><small>{sub(p)}</small></span>
+            </a>
+          ))}
         </article>
       ))}
     </section>

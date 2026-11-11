@@ -1,6 +1,8 @@
 [build]
   command = "npm run build"
   publish = "dist"
+  # Editor saves are drafts: only rebuild when "Publish website" is pressed (see scripts/should-build.sh)
+  ignore = "bash scripts/should-build.sh"
 
 [build.environment]
   NODE_VERSION = "22"

@@ -58,6 +58,14 @@ collections:
           - { label: 'Bottom', value: bottom }
           - { label: 'Left', value: left }
           - { label: 'Right', value: right }
+      - label: Homepage layout
+        name: home_layout
+        widget: select
+        default: landscape
+        hint: 'Landscape = its own row with one wide image. Portrait = shown as a tall image; two portrait projects next to each other in the Order are paired side by side in one row (a single portrait project on its own shows as landscape).'
+        options:
+          - { label: 'Landscape (own row)', value: landscape }
+          - { label: 'Portrait (paired with the next portrait project)', value: portrait }
       - label: Hero image (top of project page)
         name: hero
         widget: image
@@ -68,7 +76,7 @@ collections:
       - { label: Location, name: location, widget: string, required: false }
       - { label: Year, name: year, widget: string, required: false, hint: 'e.g. 2025 or 2015–2025' }
       - { label: My role / services, name: role, widget: string, required: false }
-      - { label: Working under, name: working_under, widget: string, required: false, hint: 'Agency or company you delivered this through — leave blank if none.' }
+      - { label: Engaged by, name: working_under, widget: string, required: false, hint: 'Agency or company that engaged you — shown as “Engaged by …”. Leave blank if none.' }
       - { label: Image credit, name: credits, widget: string, required: false, hint: 'Photographer names, shown as “Photography”.' }
       - { label: Overview, name: overview, widget: text, required: false }
       - { label: The Challenge, name: challenge, widget: text, required: false }
@@ -135,7 +143,7 @@ collections:
               - { label: Number, name: value, widget: string }
               - { label: Label, name: label, widget: string }
           - { label: Worked with, name: worked_with, widget: text, required: false }
-          - { label: Projects across (countries), name: countries, widget: text, required: false }
+          - { label: Projects across (countries), name: countries, widget: text, required: false, hint: 'Press Enter to start a new line where you want the list to break.' }
           - { label: Contact heading, name: contact_heading, widget: string }
           - { label: Email, name: email, widget: string }
           - label: Services (footer)

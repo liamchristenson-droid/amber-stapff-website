@@ -6,8 +6,167 @@
   <meta name="robots" content="noindex" />
   <title>Amber Stapff — Website editor</title>
   <link href="config.yml" type="text/yaml" rel="cms-config-url" />
+  <style>
+    /* "Publish website" bar — saves in the editor are drafts; this button sends them all live in one go */
+    #publish-bar {
+      position: fixed; right: 20px; bottom: 20px; z-index: 9999;
+      display: none; align-items: center; gap: 14px;
+      background: #141414; color: #f5f5f5; border-radius: 10px;
+      padding: 12px 14px 12px 18px; box-shadow: 0 8px 30px rgba(0,0,0,.25);
+      font: 14px/1.35 system-ui, -apple-system, 'Segoe UI', sans-serif; max-width: calc(100vw - 40px);
+    }
+    #publish-bar.show { display: flex; }
+    #publish-bar .msg small { display: block; color: #a9a9a9; font-size: 12px; margin-top: 2px; }
+    #publish-bar button {
+      border: 0; border-radius: 7px; padding: 10px 16px; cursor: pointer;
+      background: #fff; color: #141414; font: 600 14px system-ui, -apple-system, sans-serif; white-space: nowrap;
+    }
+    #publish-bar button:disabled { opacity: .45; cursor: default; }
+    #publish-bar details { font-size: 12px; color: #c9c9c9; margin-top: 6px; }
+    #publish-bar details ul { margin: 6px 0 0; padding-left: 16px; max-height: 160px; overflow: auto; }
+    #publish-bar a { color: #fff; }
+  </style>
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@3.17.1/dist/decap-cms.js"></script>
+
+  <div id="publish-bar" role="region" aria-label="Publish website">
+    <div class="msg"><span id="pb-text">Checking for changes…</span><small id="pb-sub"></small>
+      <details id="pb-details" hidden><summary>See changes</summary><ul id="pb-list"></ul></details>
+    </div>
+    <button type="button" id="pb-btn" disabled>Publish website</button>
+  </div>
+
+  <script>
+  (function () {
+    var API = 'https://api.github.com';
+    var PUBLISH_PREFIX = 'Publish website';
+    var repo = null, branch = 'main';
+    var bar = document.getElementById('publish-bar');
+    var txt = document.getElementById('pb-text'), sub = document.getElementById('pb-sub');
+    var btn = document.getElementById('pb-btn'), det = document.getElementById('pb-details'), list = document.getElementById('pb-list');
+    var pending = [], busy = false;
+
+    function token() {
+      try { var u = JSON.parse(localStorage.getItem('decap-cms-user') || 'null'); return u && u.token; } catch (e) { return null; }
+    }
+    function gh(path, opts) {
+      opts = opts || {};
+      return fetch(API + path, {
+        method: opts.method || 'GET',
+        headers: { Authorization: 'Bearer ' + token(), Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+        body: opts.body ? JSON.stringify(opts.body) : undefined,
+        cache: 'no-store'
+      }).then(function (r) {
+        if (!r.ok) return r.text().then(function (t) { var e = new Error(r.status + ' ' + t); e.status = r.status; throw e; });
+        return r.json();
+      });
+    }
+    function isPublish(m) { return m.indexOf(PUBLISH_PREFIX) === 0 || m.indexOf('[publish]') !== -1; }
+
+    // Read repo + branch from the editor config so this keeps working if the repo moves.
+    var configReady = fetch('config.yml', { cache: 'no-store' }).then(function (r) { return r.text(); }).then(function (y) {
+      var m = y.match(/^\s*repo:\s*['"]?([^\s'"#]+)/m); if (m) repo = m[1];
+      var b = y.match(/^\s*branch:\s*['"]?([^\s'"#]+)/m); if (b) branch = b[1];
+    });
+
+    function render() {
+      if (busy) return;
+      var n = pending.length;
+      btn.disabled = n === 0;
+      if (n === 0) {
+        txt.textContent = 'Website is up to date';
+        sub.textContent = 'Saving in the editor stores a draft. Press Publish when you’re ready.';
+        det.hidden = true;
+      } else {
+        txt.textContent = n + ' saved change' + (n === 1 ? '' : 's') + ' not yet on the website';
+        sub.textContent = 'Publishing sends them all live together (about a minute).';
+        list.innerHTML = '';
+        pending.slice(0, 40).forEach(function (m) { var li = document.createElement('li'); li.textContent = m; list.appendChild(li); });
+        det.hidden = false;
+      }
+    }
+
+    function refresh() {
+      if (!token() || !repo || busy) { bar.classList.toggle('show', !!token() && !!repo); return Promise.resolve(); }
+      bar.classList.add('show');
+      return gh('/repos/' + repo + '/commits?sha=' + encodeURIComponent(branch) + '&per_page=100').then(function (commits) {
+        var out = [];
+        for (var i = 0; i < commits.length; i++) {
+          var m = (commits[i].commit.message || '').split('\n')[0];
+          if (isPublish(m)) break;
+          out.push(m);
+        }
+        pending = out; render();
+      }).catch(function (e) {
+        txt.textContent = 'Couldn’t check for changes'; sub.textContent = 'Try reloading the page.'; btn.disabled = true;
+        console.warn('[publish-bar]', e);
+      });
+    }
+
+    // An empty commit whose message starts "Publish website" tells Netlify to rebuild the live site.
+    function publishCommit(attempt) {
+      var head;
+      return gh('/repos/' + repo + '/git/ref/heads/' + branch)
+        .then(function (ref) { head = ref.object.sha; return gh('/repos/' + repo + '/git/commits/' + head); })
+        .then(function (c) {
+          var n = pending.length;
+          return gh('/repos/' + repo + '/git/commits', { method: 'POST', body: {
+            message: PUBLISH_PREFIX + ' (' + n + ' change' + (n === 1 ? '' : 's') + ')\n\n' + pending.map(function (m) { return '- ' + m; }).join('\n'),
+            tree: c.tree.sha, parents: [head]
+          } });
+        })
+        .then(function (nc) { return gh('/repos/' + repo + '/git/refs/heads/' + branch, { method: 'PATCH', body: { sha: nc.sha, force: false } }); })
+        .catch(function (e) {
+          // Someone saved at the same moment — read the latest and try again.
+          if (attempt < 2 && (e.status === 422 || e.status === 409)) return publishCommit(attempt + 1);
+          throw e;
+        });
+    }
+
+    btn.addEventListener('click', function () {
+      if (!pending.length || busy) return;
+      busy = true; btn.disabled = true;
+      txt.textContent = 'Publishing…'; sub.textContent = ''; det.hidden = true;
+      publishCommit(0).then(function () {
+        pending = [];
+        txt.textContent = 'Published! The website will update in about a minute.';
+        sub.innerHTML = '<a href="/" target="_blank" rel="noopener">View the website</a> (refresh it if you don’t see the change yet).';
+        setTimeout(function () { busy = false; refresh(); }, 90000);
+      }).catch(function (e) {
+        busy = false; console.warn('[publish-bar]', e);
+        txt.textContent = 'Publishing didn’t work'; sub.textContent = 'Nothing was changed. Please try again, or let Liam know.'; btn.disabled = false;
+      });
+    });
+
+    // Re-check after every save in the editor, and every 30 seconds.
+    if (window.CMS && CMS.registerEventListener) {
+      ['postSave', 'postPublish', 'postUnpublish'].forEach(function (name) {
+        try { CMS.registerEventListener({ name: name, handler: function () { setTimeout(refresh, 1500); } }); } catch (e) {}
+      });
+    }
+    configReady.then(function () { refresh(); setInterval(refresh, 30000); });
+    window.addEventListener('storage', function (e) { if (e.key === 'decap-cms-user') refresh(); });
+    setInterval(function () { if (!bar.classList.contains('show') && token()) refresh(); }, 3000);
+
+    // The editor's own "Publish" button only saves a draft now, so call it "Save".
+    var RENAME = { 'Publish': 'Save', 'Publish now': 'Save now', 'Publishing...': 'Saving...', 'Publishing…': 'Saving…',
+      'Publish and create new': 'Save and create new', 'Publish and duplicate': 'Save and duplicate', 'Delete published entry': 'Delete entry' };
+    function relabel(root) {
+      var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null), node;
+      while ((node = w.nextNode())) {
+        if (bar.contains(node)) continue;
+        var t = node.nodeValue.trim();
+        if (RENAME[t]) node.nodeValue = node.nodeValue.replace(t, RENAME[t]);
+      }
+    }
+    new MutationObserver(function (muts) {
+      muts.forEach(function (m) {
+        if (m.type === 'characterData') relabel(m.target.parentNode || document.body);
+        m.addedNodes && m.addedNodes.forEach(function (n) { if (n.nodeType === 1) relabel(n); else if (n.nodeType === 3 && n.parentNode) relabel(n.parentNode); });
+      });
+    }).observe(document.body, { childList: true, subtree: true, characterData: true });
+  })();
+  </script>
 </body>
 </html>

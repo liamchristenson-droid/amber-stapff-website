@@ -2,7 +2,6 @@
 import '@fontsource/inter-tight/latin-300.css';
 import '@fontsource/inter-tight/latin-400.css';
 import '@fontsource/inter-tight/latin-500.css';
-import '@fontsource/ibm-plex-mono/latin-400.css';
 import '../styles/global.css';
 
 interface Props {
@@ -21,6 +20,14 @@ const { title, description = 'Amber Stapff — Creative Designer, Graphic Produc
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script is:inline>
+      /* On screens wider than the design width, scale the whole page up proportionally (like michabrandt.de) instead of leaving empty margins. */
+      (function () {
+        var base = 1680, d = document.documentElement;
+        function fit() { var w = window.innerWidth; d.style.zoom = w > base ? (w / base).toFixed(4) : ''; }
+        fit(); window.addEventListener('resize', fit);
+      })();
+    </script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>

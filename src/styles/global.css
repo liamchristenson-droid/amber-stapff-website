@@ -13,7 +13,7 @@
   --gap: clamp(20px, 2.4vw, 32px);
   --max: 1440px;
   --sans: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --mono: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif; /* small labels (was IBM Plex Mono) */
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -134,7 +134,7 @@ ul { padding: 0; list-style: none; }
 .stat span { font-size: 14px; color: var(--muted); }
 .facts { display: flex; flex-wrap: wrap; gap: 24px 48px; }
 .fact { flex: 1 1 260px; display: flex; flex-direction: column; gap: 10px; }
-.fact p { font-size: 16px; line-height: 1.6; }
+.fact p { font-size: 16px; line-height: 1.6; white-space: pre-line; text-wrap: balance; }
 
 /* Footer */
 .site-footer { background: var(--night); color: var(--night-ink); }
@@ -252,3 +252,23 @@ ul { padding: 0; list-style: none; }
 .site-footer { border-top: 1px solid var(--rule); }
 .reel img { height: auto; }
 
+
+/* Small labels in Inter Tight: a touch more tracking than the old mono */
+.label { letter-spacing: 0.08em; }
+p { text-wrap: pretty; }
+
+/* Portrait pair rows: two portrait projects side by side in columns 3 and 4 */
+.pair-text { display: flex; flex-direction: column; gap: 28px; }
+.pair-item { display: flex; flex-direction: column; gap: 10px; }
+.col-half { margin: 0; display: flex; flex-direction: column; gap: 10px; text-decoration: none; min-width: 0; }
+.col-half.first { grid-column: 3; }
+.col-half.second { grid-column: 4; }
+.r-port { aspect-ratio: 4 / 5; }
+.project-row .col-half .media { transition: opacity 0.4s ease; }
+.project-row .col-half:hover .media { opacity: 0.9; }
+@media (max-width: 899px) {
+  .pair-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pair-row .col-label, .pair-row .col-text { grid-column: 1 / -1; }
+  .col-half.first { grid-column: 1; }
+  .col-half.second { grid-column: 2; }
+}
