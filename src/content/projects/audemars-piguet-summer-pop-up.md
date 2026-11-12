@@ -8,6 +8,7 @@ cover_alt: Entrance to the Audemars Piguet Summer Pop-Up in Bangkok, featuring a
   minimalist white façade with an illuminated brand logo and a central doorway
   revealing a vibrant pink interior with a large AP monogram.
 cover_focus: center
+home_layout: portrait
 hero: ../../assets/uploads/1.png
 hero_alt: Entrance to the Audemars Piguet Summer Pop-Up in Bangkok, featuring a
   minimalist white façade with an illuminated brand logo and a central doorway
