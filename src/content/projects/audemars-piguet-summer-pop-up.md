@@ -1,6 +1,7 @@
 ---
 title: Audemars Piguet Summer Pop-Up
 published: true
+sort_key: "0-0001-audemars piguet summer pop-up"
 order: 1
 summary: Rizer
 cover: ../../assets/uploads/1.png

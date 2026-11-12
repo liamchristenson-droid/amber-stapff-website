@@ -1,6 +1,7 @@
 ---
 title: Red Sea International Film Festival
 published: true
+sort_key: "0-0006-red sea international film festival"
 order: 6
 summary: TAIT Towers
 cover: ../../assets/uploads/red-sea-film-festival-07.jpg

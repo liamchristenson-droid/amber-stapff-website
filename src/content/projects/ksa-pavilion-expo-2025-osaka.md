@@ -1,6 +1,7 @@
 ---
 title: KSA Pavilion, Expo 2025 Osaka
 published: true
+sort_key: "0-0004-ksa pavilion, expo 2025 osaka"
 order: 4
 summary: THA Staffing & Beyond Limits
 cover: ../../assets/uploads/aj209605.jpg

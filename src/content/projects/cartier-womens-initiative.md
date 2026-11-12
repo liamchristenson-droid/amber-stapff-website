@@ -1,6 +1,7 @@
 ---
 title: Cartier Women's Initiative
 published: true
+sort_key: "0-0002-cartier women's initiative"
 order: 2
 summary: "Rizer "
 cover: ../../assets/uploads/cartier-women-s-initiative-01.jpg

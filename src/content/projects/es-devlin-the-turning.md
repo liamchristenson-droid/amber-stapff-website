@@ -1,6 +1,7 @@
 ---
 title: "ES Devlin The Turning "
 published: true
+sort_key: "0-0001-es devlin the turning"
 order: 1
 summary: "Rizer "
 cover: ../../assets/uploads/892175331_18645475651036613_8868581175776537122_n.jpg

@@ -8,9 +8,14 @@ export async function getSettings() {
   return entry.data;
 }
 
+/** "0-0003-cartier women's initiative": shown before hidden, then Order, then title. Mirrors public/admin/index.html. */
+export const sortKey = (d: { published?: boolean; order: number; title: string }) =>
+  `${d.published === false ? 1 : 0}-${String(Math.max(0, Math.round(d.order))).padStart(4, '0')}-${d.title.trim().toLowerCase()}`;
+
 export async function getProjects(): Promise<Project[]> {
   const all = await getCollection('projects', ({ data }) => data.published !== false);
-  return all.sort((a, b) => a.data.order - b.data.order || a.data.title.localeCompare(b.data.title));
+  // Same rule the editor list uses (see sortKey): Order number, then title A–Z.
+  return all.sort((a, b) => (sortKey(a.data) < sortKey(b.data) ? -1 : sortKey(a.data) > sortKey(b.data) ? 1 : 0));
 }
 
 export const projectUrl = (p: Project) => `/work/${p.id}.html`;

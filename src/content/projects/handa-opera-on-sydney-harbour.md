@@ -1,6 +1,7 @@
 ---
 title: Handa Opera on Sydney Harbour
 published: true
+sort_key: "0-0007-handa opera on sydney harbour"
 order: 7
 summary: "Opera Australia "
 cover: ../../assets/uploads/aida2015-photocredit-hamiltonlund.jpg

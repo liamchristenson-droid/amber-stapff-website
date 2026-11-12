@@ -139,6 +139,20 @@
       });
     });
 
+    // Keep the editor's project list in website order: shown projects by Order number then title, hidden ones last.
+    // (Same rule as sortKey in src/lib/content.ts.)
+    if (window.CMS && CMS.registerEventListener) {
+      try {
+        CMS.registerEventListener({ name: 'preSave', handler: function (args) {
+          var entry = args.entry, data = entry.get('data');
+          if (entry.get('collection') !== 'projects') return data;
+          var pub = data.get('published') !== false, order = Math.max(0, Math.round(Number(data.get('order')) || 0));
+          var key = (pub ? '0' : '1') + '-' + ('0000' + order).slice(-4) + '-' + String(data.get('title') || '').trim().toLowerCase();
+          return data.set('sort_key', key);
+        } });
+      } catch (e) {}
+    }
+
     // Re-check after every save in the editor, and every 30 seconds.
     if (window.CMS && CMS.registerEventListener) {
       ['postSave', 'postPublish', 'postUnpublish'].forEach(function (name) {

@@ -32,14 +32,19 @@ collections:
     extension: md
     format: frontmatter
     slug: '{{slug}}'
-    summary: "{{order}} · {{title}}{{published | ternary('', ' — hidden')}}"
-    sortable_fields: ['order', 'title', 'year']
+    # Listed in the same order as the website; hidden projects sink to the bottom (sort_key is set on save)
+    summary: "{{published | ternary('', 'HIDDEN · ')}}{{order}} · {{title}}"
+    sortable_fields:
+      - { field: sort_key, label: 'Website order', default_sort: asc }
+      - title
+      - year
     view_groups:
       - label: Visibility
         field: published
     fields:
       - { label: Project title, name: title, widget: string }
       - { label: Show on website, name: published, widget: boolean, default: true }
+      - { label: Website order (automatic), name: sort_key, widget: hidden, required: false }
       - { label: Order, name: order, widget: number, value_type: int, default: 50, hint: 'Position on the homepage — 1 is first.' }
       - { label: Card subtitle, name: summary, widget: string, required: false, hint: 'Short line under the title on the homepage, e.g. “With TAIT — Graphic design & site styling”.' }
       - label: Cover image (homepage, shown landscape)

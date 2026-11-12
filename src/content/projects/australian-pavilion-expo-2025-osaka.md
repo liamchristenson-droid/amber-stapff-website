@@ -1,6 +1,7 @@
 ---
 title: Australian Pavilion, Expo 2025 Osaka
 published: true
+sort_key: "0-0003-australian pavilion, expo 2025 osaka"
 order: 3
 summary: ES Global
 cover: ../../assets/uploads/australia-osaka-2025-02.jpg

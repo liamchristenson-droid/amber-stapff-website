@@ -1,6 +1,7 @@
 ---
 title: "Pre-Cop Fiji "
 published: true
+sort_key: "0-0001-pre-cop fiji"
 order: 1
 summary: "Event Planning Group "
 cover: ../../assets/uploads/prem-kurumpanai-b8rqn7wtu34-unsplash.jpg

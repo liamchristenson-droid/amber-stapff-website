@@ -1,6 +1,7 @@
 ---
 title: AFC Women's Asian Cup 2026
 published: true
+sort_key: "0-0005-afc women's asian cup 2026"
 order: 5
 summary: Rizer
 cover: ../../assets/uploads/52a454b4-1890-49a7-8c34-973d04e25719.jpg
