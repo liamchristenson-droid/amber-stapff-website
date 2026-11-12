@@ -5,6 +5,7 @@ order: 1
 summary: "Rizer "
 cover: ../../assets/uploads/892175331_18645475651036613_8868581175776537122_n.jpg
 cover_focus: center
+home_layout: portrait
 hero: ../../assets/uploads/892175331_18645475651036613_8868581175776537122_n.jpg
 intro: Where art and precision meet, transforming an ambitious creative vision
   into a carefully considered physical experience.
