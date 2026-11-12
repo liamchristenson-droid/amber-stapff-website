@@ -5,9 +5,9 @@ meta:
   - Melbourne, Australia
   - Working globally
   - 17+ years
-hero_image: ""
+hero_image: ../../assets/uploads/coverimage.png
 hero_video: ""
-hero_poster: ""
+hero_poster: ../../assets/uploads/coverimage.png
 hero_caption: ""
 hero_caption_right: ""
 about_label: "Established. Creative. Emotive. Refined. Global. "
