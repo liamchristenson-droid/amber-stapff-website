@@ -1,12 +1,12 @@
 ---
 title: Handa Opera on Sydney Harbour
 published: true
-sort_key: "0-0007-handa opera on sydney harbour"
-order: 7
+order: 9
 summary: "Opera Australia "
 cover: ../../assets/uploads/aida2015-photocredit-hamiltonlund.jpg
 cover_alt: Fireworks over the Handa Opera stage on Sydney Harbour
 cover_focus: center
+home_layout: portrait
 hero: ../../assets/uploads/aida2015-photocredit-hamiltonlund.jpg
 hero_alt: Monumental Turandot head lit blue against the Sydney Opera House and
   Harbour Bridge
@@ -80,4 +80,5 @@ gallery:
       - image: ../../assets/uploads/handa-opera-03.jpg
         alt: Purple-lit lounge with velvet seating
 cover_shape: landscape
+sort_key: 0-0007-handa opera on sydney harbour
 ---
