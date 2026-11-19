@@ -1,7 +1,7 @@
 ---
-title: " KSA Pavilion, Expo 2027 Belgrade (Currently working) "
+title: " KSA Pavilion, Expo 2027 Belgrade (Currently engaged) "
 published: true
-sort_key: 0-0001-ksa pavilion, expo 2027 belgrade (currently working)
+sort_key: 0-0001-ksa pavilion, expo 2027 belgrade (currently engaged)
 order: 1
 cover: ../../assets/uploads/download.webp
 cover_focus: center
