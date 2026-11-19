@@ -1,12 +1,13 @@
 ---
 title: Cartier Women's Initiative
-published: true
-sort_key: "0-0002-cartier women's initiative"
+published: false
+sort_key: 1-0002-cartier women's initiative
 order: 2
 summary: "Rizer "
 cover: ../../assets/uploads/cartier-women-s-initiative-01.jpg
 cover_alt: Curved exhibition gallery for the Cartier Women's Initiative
 cover_focus: center
+home_layout: landscape
 hero: ../../assets/uploads/cartier-women-s-initiative-02.jpg
 hero_alt: Circular exhibition space beneath a ring light
 intro: Illuminating the stories of women changing the world. Translating Women
