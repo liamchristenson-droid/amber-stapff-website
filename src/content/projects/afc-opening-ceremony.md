@@ -1,12 +1,13 @@
 ---
 title: AFC Women's Asian Cup 2026
-published: true
-sort_key: "0-0005-afc women's asian cup 2026"
+published: false
+sort_key: 1-0005-afc women's asian cup 2026
 order: 5
 summary: Rizer
 cover: ../../assets/uploads/52a454b4-1890-49a7-8c34-973d04e25719.jpg
 cover_alt: Performers beneath a white ring structure at an opening ceremony
 cover_focus: center
+home_layout: landscape
 hero: ../../assets/uploads/afc-01.jpg
 hero_alt: Opening ceremony performance on a white circular stage
 intro: A celebration of women’s football on an international stage. Creating
